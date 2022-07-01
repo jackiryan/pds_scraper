@@ -45,7 +45,7 @@ def check_mission(mission: str) -> str:
     :param mission: A string containing the name of the mission of interest.
     :return: A string containing the name of that mission's directory in the PDS imaging node.
     """
-    m = str(mission, encode="utf-8").upper()
+    m = mission.encode("utf-8").upper()
     if m in _MARS2020_NAMES:
         return _MARS2020
     elif m in _MSL_NAMES:

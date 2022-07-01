@@ -24,6 +24,7 @@ SOFTWARE.
 import argparse
 import re
 import requests
+import urllib.parse
 
 from pds_scraper.url import check_url
 from pds_scraper.mission import check_mission
@@ -43,7 +44,8 @@ def get_data_url(node_name: str, mission: str) -> str:
     # Check the mission name against a list of known names from the NAIF database.
     mission_pds_name = check_mission(mission)
 
-    return node_url + mission_pds_name # wip return val
+    data_pkg_url = "/".join(node_url, mission_pds_name)
+    return data_pkg_url
 
 
 def scrape_sol(sol_int: int,
